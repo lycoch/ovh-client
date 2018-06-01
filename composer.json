@@ -1,10 +1,10 @@
 {
-    "name": "lycoch/OVHClient",
+    "name": "lycoch/ovh-client",
     "type": "library",
     "description": "PHP client library for ovh public cloud api",
     "repositories": [
         {
-            "url": "https://github.com/lycoch/OVHClient.git",
+            "url": "https://github.com/lycoch/ovh-client.git",
             "type": "git"
         }
     ],
