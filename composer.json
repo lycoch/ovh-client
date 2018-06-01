@@ -13,6 +13,6 @@
     },
     "require": {
 	"ovh/ovh": "dev-master",
-	"lycoch/OVHClient": "dev-master"
+	"lycoch/ovh-client": "dev-master"
     }
 }
