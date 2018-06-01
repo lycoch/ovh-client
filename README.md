@@ -9,13 +9,5 @@ focus on:
 
 in composer.json
 
-"require": {
-	"lycoch/OVHClient": "dev-master"
-    },
-"repositories": [
-        {
-            "url": "https://github.com/lycoch/OVHClient.git",
-            "type": "git"
-        }
-    ],
+$ composer require lycoch/ovh-client
 
