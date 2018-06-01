@@ -15,4 +15,6 @@
 	"ovh/ovh": "dev-master",
 	"lycoch/ovh-client": "dev-master"
     }
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
