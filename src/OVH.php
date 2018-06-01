@@ -19,7 +19,6 @@ class OVH {
     }
 
     public function __construct($apiConfig){
-        $this->app=$app;
 	$this->lastMessage='';
 	foreach(['applicationKey','applicationSecret','endpoint','consumer_key'] as $field){
         	if(!isset($apiConfig[$field])){
