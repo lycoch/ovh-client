@@ -2,6 +2,8 @@
     "name": "lycoch/ovh-client",
     "type": "library",
     "description": "PHP client library for ovh public cloud api",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "repositories": [
         {
             "url": "https://github.com/lycoch/ovh-client.git",
@@ -14,7 +16,5 @@
     "require": {
 	"ovh/ovh": "dev-master",
 	"lycoch/ovh-client": "dev-master"
-    },
-	"minimum-stability": "dev",
-	"prefer-stable": true
+    }
 }
