@@ -311,6 +311,25 @@ class OVH {
     public function listOvhIP() {
         return $this->listIP();
     }
+    
+    //@todo: sortir de la classe
+    public function rotation($name,$keep){
+        $ret=$this->filterByName('snapshot',$name,true);
+        $m="";
+        if($this->needToDelete($ret,$keep)){
+            foreach($ret as $snap){
+                if($this->deleteSnapshot($snap['id'])){
+                    $m.="Snapshot ".$snap['name']." was successfully deleted".PHP_EOL;
+                }else{
+                    $m.="failed to delete ".$snap['name'].":".$this->lastMessage();
+                }
+            }
+        }else{
+            $m.="no rotation needed for $name".PHP_EOL;
+        }
+        $this->lastMessage=$m;
+    }
+
 
     public function findByName($service,$name) {
         foreach($this->apiGet($service) as $res){
