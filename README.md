@@ -10,4 +10,3 @@ focus on:
 in composer.json
 
 $ composer require lycoch/ovh-client
-

@@ -56,6 +56,34 @@ class OVH {
         return sprintf('/cloud/project/%s/%s',$this->getProject(),$command);
     }
 
+    public function getRecordID($zone,$subDomain,$fieldType='TXT'){
+        $recordid = -1;
+        $txtrecords = $this->apiGet("/domain/zone/$zone/record?fieldType=$fieldType");
+        if (is_array($txtrecords)) {
+            foreach ($txtrecords as $k => $res) {
+                $record = $this->apiGet("/domain/zone/$zone/record/$res");
+                if ($subDomain == $record['subDomain']) {
+                    $recordid = $res;
+                    break;
+                }
+            }
+        }
+        return $recordid;
+    }
+    public function refreshZone($zone){
+        $this->apiPost("/domain/zone/$zone/refresh");
+        return $this->lastMessage();
+    }
+    public function createRecord($zone,$entry){
+        $this->apiPost("/domain/zone/$zone/record", $entry);
+        return $this->refreshZone($zone);
+    }
+    public function updateRecord($zone,$recordid,$entry){
+        return $this->apiPut("/domain/zone/$zone/record/$recordid", $entry);
+    }
+    public function deleteRecord($zone,$recordid){
+        return $this->apiDelete("/domain/zone/$zone/record/$recordid");
+    }
 
     /**
      * @param mixed $project
