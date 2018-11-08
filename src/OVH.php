@@ -174,7 +174,11 @@ class OVH {
         }
         foreach($this->apiGet('ip/failover') as $fo) {
             if (isset($all[$fo['routedTo']])) {
-                $fo['instance'] = isset($instances[$fo['ip']]) ? $instances[$fo['ip']] : 'FREE';
+		if(isset($instances[$fo['ip']])){
+			$fo['instance'] =$instances[$fo['ip']];
+		}else{
+			$fo['instance']['instance'] ='FREE';
+		}
                 $all[$fo['routedTo']]['ipfo'][] = $fo;
             }
         }
@@ -190,7 +194,11 @@ class OVH {
                 $all[$name]=$ovhvm;
                 foreach($ipfo as $fo) {
                     if ($all[$name]['id']==$fo['routedTo']) {
-                        $fo['instance'] = isset($instances[$fo['ip']]) ? $instances[$fo['ip']] : 'FREE';
+                       	if(isset($instances[$fo['ip']])){
+							$fo['instance'] =$instances[$fo['ip']];
+						}else{
+							$fo['instance']['instance'] ='FREE';
+						}
                         $all[$name]['ipfo'][] = $fo;
                     }
                 }
