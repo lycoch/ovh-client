@@ -67,8 +67,10 @@ class OVH {
                     break;
                 }
             }
-        }
-        return $recordid;
+            return $recordid;
+        }else{
+			return 404;
+		}
     }
     public function refreshZone($zone){
         $this->apiPost("/domain/zone/$zone/refresh");
