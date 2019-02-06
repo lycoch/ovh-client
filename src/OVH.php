@@ -79,10 +79,12 @@ class OVH {
         return $this->refreshZone($zone);
     }
     public function updateRecord($zone,$recordid,$entry){
-        return $this->apiPut("/domain/zone/$zone/record/$recordid", $entry);
+        $this->apiPut("/domain/zone/$zone/record/$recordid", $entry);
+        return $this->refreshZone($zone);
     }
     public function deleteRecord($zone,$recordid){
-        return $this->apiDelete("/domain/zone/$zone/record/$recordid");
+        $this->apiDelete("/domain/zone/$zone/record/$recordid");
+        return $this->refreshZone($zone);
     }
 
     /**
