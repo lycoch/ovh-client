@@ -383,8 +383,8 @@ class OVH {
     public function checkIfSnapPending($name,&$snapshot){
         $allSnaps=$this->filterByName('snapshot',"$name-autosnap");
         $snapshot=reset($allSnaps);
-        if($snapshot['status']=='queued'){
-            return !$this->error($snapshot['name'].' is pending');
+        if(in_array(strtolower($snapshot['status']),['queued','saving'])){
+            return !$this->error(sprintf("snapshot %s is pending, status %s",$snapshot['name'],$snapshot['status']));
         }
         return false;
     }
