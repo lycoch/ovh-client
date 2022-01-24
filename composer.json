@@ -14,7 +14,6 @@
 	            "psr-4": {"OVHClient\\": "src/"}
     },
     "require": {
-	"ovh/ovh": "dev-master",
-	"lycoch/ovh-client": "dev-master"
+	"ovh/ovh": "dev-master"
     }
 }
