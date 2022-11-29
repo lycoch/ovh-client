@@ -4,14 +4,12 @@
     "description": "PHP client library for ovh public cloud api",
     "repositories": [
         {
-            "url": "https://github.com/lycoch/ovh-client.git",
-            "type": "git"
         }
     ],
     "autoload": {
 	            "psr-4": {"OVHClient\\": "src/"}
     },
     "require": {
-	"ovh/ovh": "dev-master"
+	"ovh/ovh": "*"
     }
 }
