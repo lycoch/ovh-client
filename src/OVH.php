@@ -285,6 +285,9 @@ class OVH {
     }
     public function filterByName($service,$name,$sorted=false){
         $arr=$this->apiGet($service);
+        if(!is_array($arr)){
+            return false;
+        }
         $filtered= array_filter($arr,function($value) use($name){
             return $name=='all' || strpos($value['name'],$name)!==false;
         });
