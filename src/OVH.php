@@ -35,7 +35,8 @@ class OVH {
 
     public function precreateVM($name,$flavor,$region,$os="Debian 9"){
         $vm['region']=$region;
-        $vm['name']=$name;
+	$vm['name']=$name;
+	$vm['imageId']='';
         $vm['sshKeyId']=$this->apiGet("sshkey")[0]['id'];
         foreach($this->apiGet("flavor?region=".$vm['region']) as $f){
             if(strtolower($f['name'])==strtolower($flavor)){
@@ -46,7 +47,10 @@ class OVH {
             if(strtolower($f['name'])==strtolower($os) && $f['region']==$vm['region']){
                 $vm['imageId']=$f['id'];
             }
-        }
+	}
+	if(empty($vm['imageId'])){
+		$vm['imageId']=$os;
+	}
         return $vm;
     }
     protected function call($command){
